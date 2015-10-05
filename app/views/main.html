@@ -1,0 +1,114 @@
+
+
+<div class="container">
+	<div class="row col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Add Fruit to Order</div>
+			<div class="panel-body">
+				 <form name="fruitForm" novalidate>
+				<div class="form-group">
+					<input type="input" id="quantity" name="quantity" placeholder="quantity" ng-model="main.items.quantity" required/>
+				</div>
+				<div class="form-group">
+					<select name="fruit" id="fruit" class="form-control" ng-model="main.items.fruit">
+						<option required ng-repeat="fruit in main.fruitChoices">{{fruit.name}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" ng-disabled="main.fruitForm.$invalid" ng-click="main.addToCart(main.items)">Add to Cart</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div class="row col-md-8 pull-right">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Qty</th>
+					<th>Unit</th>
+					<th>Description</th>
+					<th>Price/Unit</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{main.fruitTotals.limes}}</td>
+					<td>Each</td>
+					<td>Limes</td>
+					<td>{{main.fruitNames.limes | currency}}</td>
+					<td>{{main.totalCost.limes | currency}}</td>
+				</tr>
+				<tr>
+					<td>{{main.fruitTotals.apples}}</td>
+					<td>Each</td>
+					<td>Apples</td>
+					<td>{{main.fruitNames.apples | currency}}</td>
+					<td>{{main.totalCost.apples | currency}}</td>
+				</tr>
+				<tr>
+					<td>{{main.fruitTotals.bananas}}</td>
+					<td>Lbs.</td>
+					<td>Banannas</td>
+					<td>{{main.fruitNames.bananas | currency}}</td>
+					<td>{{main.totalCost.bananas | currency}}</td>
+				</tr>
+				<tr>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>{{main.cartTotal | currency}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+<div class="container">
+	<div class="row col-md-4">
+			<button class="btn btn-success">Submit Order</button>
+	</div>
+</div>
+<div class="container">
+	<div class="row col-md-8" ng-show="main.message">
+		<br /><br />
+		<div class="alert alert-success fade in">{{main.message}}</div>    
+	</div>
+</div>
+
+<div class="container">
+	<div class="row col-md-8" role="alert" ng-show="main.fruitForm.quantity.$error.required">
+		<br /><br />
+		<div class="alert alert-warning">
+			Quantity is Required!
+		 </div>
+	</div>
+</div>
+	
+	<!-- {{fruitTotals | json}} -->
+	<br />
+	<!-- {{fruitPriceTotals}} -->
+
+	<!-- {{cartItems | json}} -->
+
+	<!--<tt>$valid = {{fruitForm.quantity.$valid}}</tt>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
